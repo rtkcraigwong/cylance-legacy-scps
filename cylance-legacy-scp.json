@@ -1,0 +1,84 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ProtectProdResourcesFromHumans",
+      "Effect": "Deny",
+      "Action": [
+        "athena:Delete*",
+        "backup:Delete*",
+        "cloudformation:Delete*",
+        "cloudfront:Delete*",
+        "cloudwatch:Delete*",
+        "config:Delete*",
+        "dms:Delete*",
+        "dynamodb:Delete*",
+        "ec2:Delete*",
+        "elasticache:Delete*",
+        "glacier:Delete*",
+        "glue:Delete*",
+        "guardduty:Delete*",
+        "iam:Delete*",
+        "inspector:Delete*",
+        "kinesis:Delete*",
+        "kms:Delete*",
+        "lambda:Delete*",
+        "logs:Delete*",
+        "macie2:Delete*",
+        "mq:Delete*",
+        "neptune-db:Delete*",
+        "rds:Delete*",
+        "redshift:Delete*",
+        "route53:Delete*",
+        "s3:Delete*",
+        "secretsmanager:Delete*",
+        "ses:Delete*",
+        "sns:Delete*",
+        "sqs:Delete*",
+        "ssm:Delete*",
+        "waf:Delete*",
+        "workspaces:Delete*"
+      ],
+      "Condition": {
+        "ArnNotLike": {
+          "aws:PrincipalArn": [
+            "arn:aws:iam::494215538268:role/aws-reserved/sso.amazonaws.com/*/AWSReservedSSO_RTKWLF-*-Operator_*"
+          ]
+        },
+        "StringEquals": {
+          "aws:ResourceTag/Environment": "production"
+        }
+      },
+      "Resource": "*"
+    },
+    {
+      "Sid": "DenyUnauthorizedRegions",
+      "Effect": "Deny",
+      "NotAction": [
+        "aws-portal:*",
+        "budgets:*",
+        "cloudfront:*",
+        "cloudtrail:*",
+        "cur:*",
+        "iam:*",
+        "organizations:*",
+        "route53:*",
+        "s3-outposts:*",
+        "servicecatalog:*",
+        "sso:*",
+        "support:*",
+        "waf:*"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringNotEquals": {
+          "aws:RequestedRegion": [
+            "us-east-1",
+            "eu-central-1",
+            "ap-southeast-2"
+          ]
+        }
+      }
+    }
+  ]
+}
