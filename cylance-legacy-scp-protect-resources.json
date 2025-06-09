@@ -163,6 +163,57 @@
         "arn:aws:kms:eu-central-1:494215538268:key/d3014e98-d76b-49ff-8719-6ed838b17409",
         "arn:aws:kms:ap-southeast-2:494215538268:key/a3146cc1-5df8-43b7-ad74-37018360b085"
       ]
+    },
+    {
+      "Effect": "Deny",
+      "Action": [
+        "sqs:DeleteQueue",
+        "sqs:PurgeQueue"
+      ],
+      "Condition": {
+        "ArnNotLike": {
+          "aws:PrincipalArn": [
+            "arn:aws:iam::494215538268:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_RTKWLF-*-Operator_*"
+          ]
+        }
+      },
+      "Resource": [
+        "arn:aws:sqs:ap-southeast-2:494215538268:dlq-refract-package-sor-lambda-apse2",
+        "arn:aws:sqs:ap-southeast-2:494215538268:dlq-upload-lambda-apse2",
+        "arn:aws:sqs:ap-southeast-2:494215538268:jobs-sqsstatus-func",
+        "arn:aws:sqs:ap-southeast-2:494215538268:overlord-autoscale-termination",
+        "arn:aws:sqs:eu-central-1:494215538268:dlq-refract-package-sor-lambda-euc1",
+        "arn:aws:sqs:eu-central-1:494215538268:dlq-upload-lambda-euc1",
+        "arn:aws:sqs:eu-central-1:494215538268:jobs-sqsstatus-func",
+        "arn:aws:sqs:eu-central-1:494215538268:overlord-autoscale-termination",
+        "arn:aws:sqs:us-east-1:494215538268:O-O-devicestatus-updater-staging",
+        "arn:aws:sqs:us-east-1:494215538268:awseb-e-64irygj3qe-stack-AWSEBWorkerDeadLetterQueue-14SXW5ECR5SS6",
+        "arn:aws:sqs:us-east-1:494215538268:awseb-e-64irygj3qe-stack-AWSEBWorkerQueue-S47L0NCNHWLO",
+        "arn:aws:sqs:us-east-1:494215538268:cloud-custodian-mailer",
+        "arn:aws:sqs:us-east-1:494215538268:cloud-custodian-mailer-dlq",
+        "arn:aws:sqs:us-east-1:494215538268:cylancecloudtrail",
+        "arn:aws:sqs:us-east-1:494215538268:databricks-auto-ingest-venue-memdef",
+        "arn:aws:sqs:us-east-1:494215538268:databricks-auto-ingest-venue-scriptcontrol",
+        "arn:aws:sqs:us-east-1:494215538268:databricks-auto-ingest-vtdetections",
+        "arn:aws:sqs:us-east-1:494215538268:datsci-s3-changes",
+        "arn:aws:sqs:us-east-1:494215538268:dlq-refract-package-sor-lambda-dev",
+        "arn:aws:sqs:us-east-1:494215538268:dlq-refract-package-sor-lambda-stg",
+        "arn:aws:sqs:us-east-1:494215538268:dlq-refract-package-sor-lambda-use1",
+        "arn:aws:sqs:us-east-1:494215538268:dlq-upload-lambda-dev",
+        "arn:aws:sqs:us-east-1:494215538268:dlq-upload-lambda-stg",
+        "arn:aws:sqs:us-east-1:494215538268:dlq-upload-lambda-use1",
+        "arn:aws:sqs:us-east-1:494215538268:inf-lambda-dlq",
+        "arn:aws:sqs:us-east-1:494215538268:inf-lambda-dlq-staging",
+        "arn:aws:sqs:us-east-1:494215538268:inf-reporting-s3-object",
+        "arn:aws:sqs:us-east-1:494215538268:inf-test-sqs.fifo",
+        "arn:aws:sqs:us-east-1:494215538268:jobs-sqsstatus-func",
+        "arn:aws:sqs:us-east-1:494215538268:jobs-staging-sqsstatus-func",
+        "arn:aws:sqs:us-east-1:494215538268:ops-puppet-s3-object",
+        "arn:aws:sqs:us-east-1:494215538268:ops-puppet-s3-object-apse2",
+        "arn:aws:sqs:us-east-1:494215538268:ops-puppet-s3-object-eu",
+        "arn:aws:sqs:us-east-1:494215538268:ops-puppet-s3-object-govcloud",
+        "arn:aws:sqs:us-east-1:494215538268:overlord-autoscale-termination"
+      ]
     }
   ]
 }
