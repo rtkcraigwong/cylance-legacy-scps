@@ -1,0 +1,149 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Deny",
+      "Action": [
+        "athena:Delete*",
+        "backup:Delete*",
+        "cloudformation:Delete*",
+        "cloudfront:Delete*",
+        "cloudwatch:Delete*",
+        "config:Delete*",
+        "dms:Delete*",
+        "dynamodb:Delete*",
+        "ec2:Delete*",
+        "ec2:TerminateInstances",
+        "elasticache:Delete*",
+        "glacier:Delete*",
+        "glue:Delete*",
+        "guardduty:Delete*",
+        "iam:Delete*",
+        "inspector:Delete*",
+        "kinesis:Delete*",
+        "kms:Delete*",
+        "lambda:Delete*",
+        "logs:Delete*",
+        "macie2:Delete*",
+        "mq:Delete*",
+        "neptune-db:Delete*",
+        "rds:Delete*",
+        "redshift:Delete*",
+        "route53:Delete*",
+        "s3:Delete*",
+        "secretsmanager:Delete*",
+        "ses:Delete*",
+        "sns:Delete*",
+        "sqs:Delete*",
+        "ssm:Delete*",
+        "waf:Delete*",
+        "workspaces:Delete*"
+      ],
+      "Condition": {
+        "ArnNotLike": {
+          "aws:PrincipalArn": [
+            "arn:aws:iam::494215538268:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_RTKWLF-*-Operator_*"
+          ]
+        },
+        "StringEquals": {
+          "aws:ResourceTag/Environment": "production"
+        }
+      },
+      "Resource": "*"
+    },
+    {
+      "Effect": "Deny",
+      "Action": [
+        "lambda:DeleteFunction"
+      ],
+      "Condition": {
+        "ArnNotLike": {
+          "aws:PrincipalArn": [
+            "arn:aws:iam::494215538268:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_RTKWLF-*-Operator_*"
+          ]
+        }
+      },
+      "Resource": [
+        "arn:aws:lambda:ap-southeast-2:494215538268:function:refract-package-sor-lambda-apse2",
+        "arn:aws:lambda:ap-southeast-2:494215538268:function:refract-execution-events-apse2",
+        "arn:aws:lambda:ap-southeast-2:494215538268:function:upload-lambda-apse2",
+        "arn:aws:lambda:ap-southeast-2:494215538268:function:refract-execution-responses-apse2",
+        "arn:aws:lambda:eu-central-1:494215538268:function:refract-package-sor-lambda-euc1",
+        "arn:aws:lambda:eu-central-1:494215538268:function:upload-lambda-euc1",
+        "arn:aws:lambda:eu-central-1:494215538268:function:refract-execution-events-euc1",
+        "arn:aws:lambda:eu-central-1:494215538268:function:refract-execution-responses-euc1",
+        "arn:aws:lambda:us-east-1:494215538268:function:upload-lambda-use1",
+        "arn:aws:lambda:us-east-1:494215538268:function:refract-execution-events-use1",
+        "arn:aws:lambda:us-east-1:494215538268:function:refract-package-sor-lambda-use1",
+        "arn:aws:lambda:us-east-1:494215538268:function:refract-execution-responses-use1"
+      ]
+    },
+    {
+      "Effect": "Deny",
+      "Action": [
+        "rds:DeleteCluster",
+        "rds:DeleteInstance"
+      ],
+      "Condition": {
+        "ArnNotLike": {
+          "aws:PrincipalArn": [
+            "arn:aws:iam::494215538268:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_RTKWLF-*-Operator_*"
+          ]
+        }
+      },
+      "Resource": [
+        "arn:aws:rds:ap-southeast-2:494215538268:cluster:houston2-cluster",
+        "arn:aws:rds:eu-central-1:494215538268:cluster:houston2-cluster",
+        "arn:aws:rds:eu-central-1:494215538268:cluster:infinity10-cluster-1",
+        "arn:aws:rds:eu-central-1:494215538268:cluster:infinity-scalar2-cluster",
+        "arn:aws:rds:eu-central-1:494215538268:cluster:package-sor-db-euc1",
+        "arn:aws:rds:us-east-1:494215538268:cluster:cluster-ri-centropy-prod",
+        "arn:aws:rds:us-east-1:494215538268:cluster:infinity10-cluster",
+        "arn:aws:rds:us-east-1:494215538268:cluster:infinity-private3-cluster",
+        "arn:aws:rds:us-east-1:494215538268:cluster:scalar-houston2-cluster",
+        "arn:aws:rds:ap-southeast-2:494215538268:db:houston2",
+        "arn:aws:rds:ap-southeast-2:494215538268:db:infinity-scalar2",
+        "arn:aws:rds:ap-southeast-2:494215538268:db:infinity-scalar2-r1",
+        "arn:aws:rds:ap-southeast-2:494215538268:db:overlord-pdns-mysql",
+        "arn:aws:rds:ap-southeast-2:494215538268:db:package-sor-db-apse2-1",
+        "arn:aws:rds:ap-southeast-2:494215538268:db:puppet4db",
+        "arn:aws:rds:eu-central-1:494215538268:db:houston2",
+        "arn:aws:rds:eu-central-1:494215538268:db:houston2-instance",
+        "arn:aws:rds:eu-central-1:494215538268:db:infinity10-instance-1a",
+        "arn:aws:rds:eu-central-1:494215538268:db:infinity-scalar2",
+        "arn:aws:rds:eu-central-1:494215538268:db:infinity-scalar2-r1",
+        "arn:aws:rds:eu-central-1:494215538268:db:overlord-pdns-mysql",
+        "arn:aws:rds:eu-central-1:494215538268:db:package-sor-db-euc1-0",
+        "arn:aws:rds:eu-central-1:494215538268:db:puppet4db",
+        "arn:aws:rds:us-east-1:494215538268:db:bitbucket-d",
+        "arn:aws:rds:us-east-1:494215538268:db:chu-craftdb-production-001",
+        "arn:aws:rds:us-east-1:494215538268:db:infinity10",
+        "arn:aws:rds:us-east-1:494215538268:db:infinity10-r2",
+        "arn:aws:rds:us-east-1:494215538268:db:infinity-ops2",
+        "arn:aws:rds:us-east-1:494215538268:db:infinity-private3",
+        "arn:aws:rds:us-east-1:494215538268:db:infinity-private3-us1a-r1",
+        "arn:aws:rds:us-east-1:494215538268:db:ops-olympus",
+        "arn:aws:rds:us-east-1:494215538268:db:ops-olympus-stg",
+        "arn:aws:rds:us-east-1:494215538268:db:puppet4db",
+        "arn:aws:rds:us-east-1:494215538268:db:rds-ri-centropy-prod-0",
+        "arn:aws:rds:us-east-1:494215538268:db:scalar-houston2"
+      ]
+    },
+    {
+      "Effect": "Deny",
+      "Action": [
+        "sns:DeleteTopic"
+      ],
+      "Condition": {
+        "ArnNotLike": {
+          "aws:PrincipalArn": [
+            "arn:aws:iam::494215538268:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_RTKWLF-*-Operator_*"
+          ]
+        }
+      },
+      "Resource": [
+        "arn:aws:sns:us-east-1:494215538268:venue-prod-low-storage"
+      ]
+    }
+  ]
+}
