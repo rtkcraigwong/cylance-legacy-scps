@@ -30,7 +30,6 @@
         "rds:Delete*",
         "redshift:Delete*",
         "route53:Delete*",
-        "s3:Delete*",
         "secretsmanager:Delete*",
         "ses:Delete*",
         "sns:Delete*",
@@ -42,7 +41,9 @@
       "Condition": {
         "ArnNotLike": {
           "aws:PrincipalArn": [
-            "arn:aws:iam::494215538268:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_RTKWLF-*-Operator_*"
+            "arn:aws:iam::494215538268:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_RTKWLF-*-Operator_*",
+            "arn:aws:iam::494215538268:role/devops-admins",
+            "arn:aws:iam::494215538268:role/user-priv-admins"
           ]
         },
         "StringEquals": {
@@ -87,7 +88,9 @@
       "Condition": {
         "ArnNotLike": {
           "aws:PrincipalArn": [
-            "arn:aws:iam::494215538268:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_RTKWLF-*-Operator_*"
+            "arn:aws:iam::494215538268:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_RTKWLF-*-Operator_*",
+            "arn:aws:iam::494215538268:role/devops-admins",
+            "arn:aws:iam::494215538268:role/user-priv-admins"
           ]
         }
       },
@@ -137,7 +140,9 @@
       "Condition": {
         "ArnNotLike": {
           "aws:PrincipalArn": [
-            "arn:aws:iam::494215538268:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_RTKWLF-*-Operator_*"
+            "arn:aws:iam::494215538268:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_RTKWLF-*-Operator_*",
+            "arn:aws:iam::494215538268:role/devops-admins",
+            "arn:aws:iam::494215538268:role/user-priv-admins"
           ]
         }
       },
@@ -154,7 +159,9 @@
       "Condition": {
         "ArnNotLike": {
           "aws:PrincipalArn": [
-            "arn:aws:iam::494215538268:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_RTKWLF-*-Operator_*"
+            "arn:aws:iam::494215538268:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_RTKWLF-*-Operator_*",
+            "arn:aws:iam::494215538268:role/devops-admins",
+            "arn:aws:iam::494215538268:role/user-priv-admins"
           ]
         }
       },
@@ -173,7 +180,9 @@
       "Condition": {
         "ArnNotLike": {
           "aws:PrincipalArn": [
-            "arn:aws:iam::494215538268:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_RTKWLF-*-Operator_*"
+            "arn:aws:iam::494215538268:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_RTKWLF-*-Operator_*",
+            "arn:aws:iam::494215538268:role/devops-admins",
+            "arn:aws:iam::494215538268:role/user-priv-admins"
           ]
         }
       },
@@ -213,6 +222,199 @@
         "arn:aws:sqs:us-east-1:494215538268:ops-puppet-s3-object-eu",
         "arn:aws:sqs:us-east-1:494215538268:ops-puppet-s3-object-govcloud",
         "arn:aws:sqs:us-east-1:494215538268:overlord-autoscale-termination"
+      ]
+    },
+    {
+      "Effect": "Deny",
+      "Action": [
+        "elasticache:DeleteCacheCluster"
+      ],
+      "Condition": {
+        "ArnNotLike": {
+          "aws:PrincipalArn": [
+            "arn:aws:iam::494215538268:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_RTKWLF-*-Operator_*",
+            "arn:aws:iam::494215538268:role/devops-admins",
+            "arn:aws:iam::494215538268:role/user-priv-admins"
+          ]
+        }
+      },
+      "Resource": [
+        "arn:aws:elasticache:us-east-1:494215538268:cluster:chu-device-001",
+        "arn:aws:elasticache:us-east-1:494215538268:cluster:chu-device-002",
+        "arn:aws:elasticache:us-east-1:494215538268:cluster:chu-global-001",
+        "arn:aws:elasticache:us-east-1:494215538268:cluster:chu-global-002",
+        "arn:aws:elasticache:us-east-1:494215538268:cluster:chu-shard-001",
+        "arn:aws:elasticache:us-east-1:494215538268:cluster:chu-shard-002",
+        "arn:aws:elasticache:us-east-1:494215538268:cluster:chu-shardmap-001",
+        "arn:aws:elasticache:us-east-1:494215538268:cluster:chu-shardmap-002",
+        "arn:aws:elasticache:us-east-1:494215538268:cluster:chu-storefront-001",
+        "arn:aws:elasticache:us-east-1:494215538268:cluster:chu-storefront-002",
+        "arn:aws:elasticache:us-east-1:494215538268:cluster:confirm-cache-001",
+        "arn:aws:elasticache:us-east-1:494215538268:cluster:confirm-cache-002",
+        "arn:aws:elasticache:us-east-1:494215538268:cluster:infinity-injection",
+        "arn:aws:elasticache:us-east-1:494215538268:cluster:nginx-router-papi-rate-limit-qa2-6x-001",
+        "arn:aws:elasticache:us-east-1:494215538268:cluster:nginx-router-papi-rate-limit-qa2-6x-002",
+        "arn:aws:elasticache:us-east-1:494215538268:cluster:private-cache-001",
+        "arn:aws:elasticache:us-east-1:494215538268:cluster:private-cache-002",
+        "arn:aws:elasticache:us-east-1:494215538268:cluster:publicdata-001",
+        "arn:aws:elasticache:us-east-1:494215538268:cluster:publicdata-002",
+        "arn:aws:elasticache:ap-southeast-2:494215538268:cluster:nginx-router-papi-rate-limit-prod-6x-001",
+        "arn:aws:elasticache:ap-southeast-2:494215538268:cluster:nginx-router-papi-rate-limit-prod-6x-002"
+      ]
+    },
+    {
+      "Effect": "Deny",
+      "Action": [
+        "elasticloadbalancing:DeleteLoadBalancer"
+      ],
+      "Condition": {
+        "ArnNotLike": {
+          "aws:PrincipalArn": [
+            "arn:aws:iam::494215538268:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_RTKWLF-*-Operator_*",
+            "arn:aws:iam::494215538268:role/devops-admins",
+            "arn:aws:iam::494215538268:role/user-priv-admins"
+          ]
+        }
+      },
+      "Resource": [
+        "arn:aws:elasticloadbalancing:us-east-1:494215538268:loadbalancer/net/VN-SQL-US-104/3b6505507bac1ea1",
+        "arn:aws:elasticloadbalancing:us-east-1:494215538268:loadbalancer/net/VN-SQL-US-103/3ded095e4d015d93",
+        "arn:aws:elasticloadbalancing:us-east-1:494215538268:loadbalancer/net/VN-SQL-US-099/404c7b8b14baecbc",
+        "arn:aws:elasticloadbalancing:us-east-1:494215538268:loadbalancer/net/VN-SQL-US-105/46d29202b79e141a",
+        "arn:aws:elasticloadbalancing:us-east-1:494215538268:loadbalancer/net/VN-SQL-US-106/4b2826a6a9c2762e",
+        "arn:aws:elasticloadbalancing:us-east-1:494215538268:loadbalancer/net/VN-SQL-US-108/5f5d4684cba51170",
+        "arn:aws:elasticloadbalancing:us-east-1:494215538268:loadbalancer/net/VN-SQL-US-102/904f92900aa31b2f",
+        "arn:aws:elasticloadbalancing:us-east-1:494215538268:loadbalancer/net/VN-SQL-US-100/981ad897e869197d",
+        "arn:aws:elasticloadbalancing:us-east-1:494215538268:loadbalancer/net/VN-SQL-US-101/b52cc70b3bed4874",
+        "arn:aws:elasticloadbalancing:us-east-1:494215538268:loadbalancer/net/VN-SQL-US-107/bcfd1b2d5faa01ab",
+        "arn:aws:elasticloadbalancing:us-east-1:494215538268:loadbalancer/net/VN-SQL-US-511/c6bc00c3976af7b7",
+        "arn:aws:elasticloadbalancing:ap-southeast-2:494215538268:loadbalancer/net/VN-SQL-AU-101/1bd6e74d698776df",
+        "arn:aws:elasticloadbalancing:ap-southeast-2:494215538268:loadbalancer/net/VN-SQL-AU-100/24a23284d0b56e8a",
+        "arn:aws:elasticloadbalancing:ap-southeast-2:494215538268:loadbalancer/net/VN-SQL-AU-102/f6768f6baf604a03",
+        "arn:aws:elasticloadbalancing:eu-central-1:494215538268:loadbalancer/net/VN-SQL-EU-100/2fef761c5f357cf2",
+        "arn:aws:elasticloadbalancing:eu-central-1:494215538268:loadbalancer/net/VN-SQL-EU-101/e39f9a53574748d3"
+      ]
+    },
+    {
+      "Effect": "Deny",
+      "Action": [
+        "dynamodb:DeleteTable"
+      ],
+      "Condition": {
+        "ArnNotLike": {
+          "aws:PrincipalArn": [
+            "arn:aws:iam::494215538268:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_RTKWLF-*-Operator_*",
+            "arn:aws:iam::494215538268:role/devops-admins",
+            "arn:aws:iam::494215538268:role/user-priv-admins"
+          ]
+        }
+      },
+      "Resource": [
+        "arn:aws:dynamodb:us-east-1:494215538268:table/ASP.NET_SessionState",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/ChuSessionStore",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/DeviceStatus",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/DynamoDBCrossRegionReplication162bc339e08fd0dee9e2fa6db19ab41a",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/DynamoDBCrossRegionReplication644504fc0965e468ac4842a3ede9715f",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/DynamoDBCrossRegionReplication_us-east-1_DynamoDBReplicationCoordinatorMetadata",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/DynamoDBReplicationCoordinatorMetadata",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/Infinity-Auth-Device",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/Infinity-Auth-DeviceZone",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/Infinity-Auth-Tenant",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/Infinity-Auth-Zone",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/InfinityCentroid",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/InfinityScalar",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/OpsDataExportRequest",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/ScalarConveyor",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/VenueCISessionStore",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/VenuePartnerSessionStore",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/VenueProdSessionStore",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/VenueSessionStorer02",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/VenueThreat",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/awseb-e-64irygj3qe-stack-AWSEBWorkerCronLeaderRegistry-1J9RFLOB30139",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/chu.prod.consumerTenant",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/chu.prod.gaNotification",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/chu.prod.licenseProduct",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/chu.prod.parentTenant",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/conveyor_USE1-O-O-resp_query",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/infinity-classification",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/terraform_statelock",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/venue_stats",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/InfinityScalar",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/OpsDataExportRequest",
+        "arn:aws:dynamodb:us-east-1:494215538268:table/VenueProdSessionStore"
+      ]
+    },
+    {
+      "Effect": "Deny",
+      "Action": [
+        "ec2:TerminateInstances"
+      ],
+      "Condition": {
+        "ArnNotLike": {
+          "aws:PrincipalArn": [
+            "arn:aws:iam::494215538268:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_RTKWLF-*-Operator_*",
+            "arn:aws:iam::494215538268:role/devops-admins",
+            "arn:aws:iam::494215538268:role/user-priv-admins"
+          ]
+        }
+      },
+      "Resource": [
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-07fa07426bb53a4a3",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-00cd04d692eec907a",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-045916e66cd62c5e6",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-0b4ccad0dbb781953",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-07f3f3d5d7c2aa3a0",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-057b7273e2f67bcd7",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-019e0a492c73a6092",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-03647c92dd6bcb33c",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-09f600c32c5f5f48c",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-098c7342b4f167b8c",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-0d1acb07bef9d92d4",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-04aa62214cc20f730",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-0b5ffad0435e2a691",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-01217b638a9cf9a8f",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-047cca204b2e2119e",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-0f74ff3a796e1dec5",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-012ecbfdbb7022cad",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-097771047f41125d2",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-09a48fa9f9ce93a7f",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-09a991020548d5bca",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-0564f29fe463871d7",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-02f20de3af0021386",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-038dd709478de127a",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-072257daba4435bd3",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-00c381c3fd349aae5",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-0accccbddb5250364",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-0fd6bd7af13b84181",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-0a5382a4ef2c0d064",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-0b1767e5e380f15a3",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-0759ee143050e5850",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-03218e117047304c4",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-07ecd6a4293130658",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-03c983ea5b1af5ba4",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-0bd954a5b3619b0c7",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-0a2db6a4330512387",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-0150b64fcef58df7a",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-0f8c4faa7b8af0824",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-0fc0f4cdc9be4a444",
+        "arn:aws:ec2:us-east-1:494215538268:instance/i-02a48227fa1b32326",
+        "arn:aws:ec2:ap-southeast-2:494215538268:instance/i-06fde4832ba629aef",
+        "arn:aws:ec2:ap-southeast-2:494215538268:instance/i-0f5b7ee79e28c1c11",
+        "arn:aws:ec2:ap-southeast-2:494215538268:instance/i-09ae8abc9bf7236cc",
+        "arn:aws:ec2:ap-southeast-2:494215538268:instance/i-06b47cacacb66d6f8",
+        "arn:aws:ec2:ap-southeast-2:494215538268:instance/i-013e5ebc3ef05c431",
+        "arn:aws:ec2:ap-southeast-2:494215538268:instance/i-0af497b3ed343242c",
+        "arn:aws:ec2:ap-southeast-2:494215538268:instance/i-01a1b6ce8ddcfe61f",
+        "arn:aws:ec2:ap-southeast-2:494215538268:instance/i-0d61d52c8a0ae39b5",
+        "arn:aws:ec2:ap-southeast-2:494215538268:instance/i-0308c01d805dd877c",
+        "arn:aws:ec2:ap-southeast-2:494215538268:instance/i-0d38a75839e98e187",
+        "arn:aws:ec2:eu-central-1:494215538268:instance/i-0e14ca88bce4b255f",
+        "arn:aws:ec2:eu-central-1:494215538268:instance/i-0ca2429f4c1fe839a",
+        "arn:aws:ec2:eu-central-1:494215538268:instance/i-0cbe4b4598d45f3f7",
+        "arn:aws:ec2:eu-central-1:494215538268:instance/i-0e559735dc8cefa77",
+        "arn:aws:ec2:eu-central-1:494215538268:instance/i-009730513a9117a49",
+        "arn:aws:ec2:eu-central-1:494215538268:instance/i-017f8fe0fe2822be1",
+        "arn:aws:ec2:eu-central-1:494215538268:instance/i-05b1cf093be2c5968"
       ]
     }
   ]
