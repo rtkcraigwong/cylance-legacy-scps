@@ -1,0 +1,81 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ProtectProdResources",
+      "Effect": "Deny",
+      "Action": [
+        "athena:Delete*",
+        "backup:Delete*",
+        "cloudformation:Delete*",
+        "cloudfront:Delete*",
+        "config:Delete*",
+        "dms:Delete*",
+        "dynamodb:DeleteBackup",
+        "dynamodb:DeleteResourcePolicy",
+        "dynamodb:DeleteTable",
+        "dynamodb:DeleteTableReplica",
+        "elasticache:DeleteCacheCluster",
+        "elasticache:DeleteCacheParameterGroup",
+        "elasticache:DeleteCacheSecurityGroup",
+        "elasticache:DeleteCacheSubnetGroup",
+        "elasticache:DeleteGlobalReplicationGroup",
+        "elasticache:DeleteReplicationGroup",
+        "elasticache:DeleteServerlessCache",
+        "elasticache:DeleteServerlessCacheSnapshot",
+        "elasticache:DeleteUser",
+        "elasticache:DeleteUserGroup",
+        "glacier:Delete*",
+        "guardduty:Delete*",
+        "iam:Delete*",
+        "inspector:Delete*",
+        "kinesis:Delete*",
+        "kms:Delete*",
+        "lambda:Delete*",
+        "macie2:Delete*",
+        "mq:Delete*",
+        "neptune-db:Delete*",
+        "rds:Delete*",
+        "redshift:Delete*",
+        "route53:Delete*",
+        "s3:DeleteAccessGrant",
+        "s3:DeleteAccessGrantsInstance",
+        "s3:DeleteAccessGrantsInstanceResourcePolicy",
+        "s3:DeleteAccessGrantsLocation",
+        "s3:DeleteAccessPoint",
+        "s3:DeleteAccessPointForObjectLambda",
+        "s3:DeleteAccessPointPolicy",
+        "s3:DeleteAccessPointPolicyForObjectLambda",
+        "s3:DeleteBucket",
+        "s3:DeleteBucketMetadataTableConfiguration",
+        "s3:DeleteBucketPolicy",
+        "s3:DeleteBucketWebsite",
+        "s3:DeleteMultiRegionAccessPoint",
+        "secretsmanager:Delete*",
+        "ses:Delete*",
+        "sns:Delete*",
+        "sqs:DeleteQueue",
+        "sqs:DeleteQueue",
+        "ssm:Delete*",
+        "waf:Delete*",
+        "workspaces:Delete*"
+      ],
+      "Condition": {
+        "ArnNotLike": {
+          "aws:PrincipalArn": [
+            "arn:aws:iam::494215538268:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_RTKWLF-*-Operator_*",
+            "arn:aws:iam::494215538268:role/devops-admins",
+            "arn:aws:iam::494215538268:role/user-priv-admins",
+            "arn:aws:iam::494215538268:role/jenkins*",
+            "arn:aws:iam::494215538268:role/svc-*",
+            "arn:aws:iam::494215538268:role/jobs"
+          ]
+        },
+        "StringEquals": {
+          "aws:ResourceTag/Environment": "production"
+        }
+      },
+      "Resource": "*"
+    }
+  ]
+}
